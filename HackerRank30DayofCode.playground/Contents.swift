@@ -28,7 +28,6 @@ print(s + c1)
  *  2. INTEGER tip_percent
  *  3. INTEGER tax_percent
  */
-
 func solve(meal_cost: Double, tip_percent: Int, tax_percent: Int) -> Void {
     let tip_percent = Double(tip_percent)
     let tax_percent = Double(tax_percent)
@@ -47,5 +46,6 @@ guard let tax_percent = Int((readLine()?.trimmingCharacters(in: .whitespacesAndN
 else { fatalError("Bad input") }
 
 solve(meal_cost: meal_cost, tip_percent: tip_percent, tax_percent: tax_percent)
+
 
 
