@@ -19,5 +19,33 @@ var c1 = String(c!)
 print(i + a1!)
 print(d + b1!)
 print(s + c1)
+//Day2
+/*
+ * Complete the 'solve' function below.
+ *
+ * The function accepts following parameters:
+ *  1. DOUBLE meal_cost
+ *  2. INTEGER tip_percent
+ *  3. INTEGER tax_percent
+ */
+func solve(meal_cost: Double, tip_percent: Int, tax_percent: Int) -> Void {
+    let tip_percent = Double(tip_percent)
+    let tax_percent = Double(tax_percent)
+    var cost = meal_cost / 100 * (tax_percent + tip_percent) + meal_cost
+    let total_cost = Int(cost.rounded())
+    print(total_cost)
+}
+
+guard let meal_cost = Double((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+guard let tip_percent = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+guard let tax_percent = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+solve(meal_cost: meal_cost, tip_percent: tip_percent, tax_percent: tax_percent)
+
 
 
