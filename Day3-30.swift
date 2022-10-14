@@ -81,3 +81,10 @@ for _ in 0..<t {
     print("")
 }
 
+//Day5
+/*Given an integer, , print its first  multiples. Each multiple  (where ) should be printed on a new line in the form: n x i = result.*/
+guard let n = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+for i in 1...10 {
+    print("\(n) x \(i) = \(n * i)")
+}
