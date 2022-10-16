@@ -88,3 +88,33 @@ else { fatalError("Bad input") }
 for i in 1...10 {
     print("\(n) x \(i) = \(n * i)")
 }
+
+//Day6
+/*Given a string, , of length  that is indexed from  to , print its even-indexed and odd-indexed characters as  space-separated strings on a single line (see the Sample below for more detail).*/
+let numStrings = Int(readLine()!)!
+
+func printEvenAndOdd(string: String) {
+    // This prints inputString to stderr for debugging:
+    fputs("string: " + string + "\n", stderr)
+    
+    // Print the even-indexed characters
+    // Write your code here
+    var evenstring = ""
+    var oddstring = ""
+    
+    for (index, char) in string.enumerated() {
+        if index % 2 == 0 {
+            evenstring.append(char)
+        } else {
+            oddstring.append(char)
+        }
+    }
+    print(evenstring + " " + oddstring)
+    // Print the odd-indexed characters
+    // Write your code here
+}
+
+for _ in 1...numStrings {
+    let inputString = readLine()!
+    printEvenAndOdd(string: inputString)
+}
