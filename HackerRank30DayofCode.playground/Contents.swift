@@ -47,5 +47,22 @@ else { fatalError("Bad input") }
 
 solve(meal_cost: meal_cost, tip_percent: tip_percent, tax_percent: tax_percent)
 
+//Day7
+/*Given an array, , of  integers, print 's elements in reverse order as a single line of space-separated numbers.*/
 
+ guard let n = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+ else { fatalError("Bad input") }
+
+ guard let arrTemp = readLine()?.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression) else { fatalError("Bad input") }
+
+ let arr: [Int] = arrTemp.split(separator: " ").map {
+     if let arrItem = Int($0) {
+         return arrItem
+     } else { fatalError("Bad input") }
+ }
+
+ guard arr.count == n else { fatalError("Bad input") }
+
+ var A = arr.reversed()
+ print(A.map { String($0) }.joined(separator: " "))
 
