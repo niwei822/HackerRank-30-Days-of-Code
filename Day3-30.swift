@@ -139,4 +139,25 @@ for _ in 1...numStrings {
  print(A.map { String($0) }.joined(separator: " "))
 
 //Day8
-typealia
+/*Given  names and phone numbers, assemble a phone book that maps friends' names to their respective phone numbers. You will then be given an unknown number of names to query your phone book for. For each  queried, print the associated entry from your phone book on a new line in the form name=phoneNumber; if an entry for  is not found, print Not found*/
+guard let n = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+var phonebook = [String: String]()
+
+for i in 1...n {
+    guard let phone = readLine()?.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression) else { fatalError("Bad input") }
+    let phone_split = phone.split(separator: " ")
+    phonebook[String(phone_split[0])] = String(phone_split[1])
+}
+
+guard phonebook.count == n else { fatalError("Bad input") }
+
+while let name = readLine() {
+    guard name != "" else { break }
+    if phonebook.keys.contains(name) {
+        print(name + "=" + phonebook[name]!)
+    } else {
+        print("Not found")
+    }
+}
