@@ -169,3 +169,17 @@ let res = matchingStrings(strings: strings, queries: queries)
 
 fileHandle.write(res.map{ String($0) }.joined(separator: "\n").data(using: .utf8)!)
 fileHandle.write("\n".data(using: .utf8)!)
+//another solution
+func matchingStrings1(strings: [String], queries: [String]) -> [Int] {
+    var count:[Int] = []
+    for i in 0..<queries.count {
+        var num = 0
+        for j in 0..<strings.count {
+            if queries[i] == strings[j] {
+                num += 1
+            }
+        }
+        count.append(num)
+    }
+    return count
+}
