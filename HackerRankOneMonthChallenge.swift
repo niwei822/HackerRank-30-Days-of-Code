@@ -82,18 +82,18 @@ miniMaxSum(arr: arr)
 
 func timeConversion(s: String) -> String {
     // Write your code here
-let arr = s.components(separatedBy: ":")
-let i = arr.count - 1
-let time = arr[i].dropLast(2)
-let new = s.dropLast(2)
-if arr[i].contains("P") && arr[0] != "12" {
-    let hour = Int(arr[0])! + 12
-     return "\(hour):\(arr[1]):\(time)"
-} else if arr[i].contains("A") && arr[0] == "12" {
-    return "00:\(arr[1]):\(time)"
-} else {
-    return String(new)
-}
+    let arr = s.components(separatedBy: ":")
+    let i = arr.count - 1
+    let time = arr[i].dropLast(2)
+    let new = s.dropLast(2)
+    if arr[i].contains("P") && arr[0] != "12" {
+        let hour = Int(arr[0])! + 12
+        return "\(hour):\(arr[1]):\(time)"
+    } else if arr[i].contains("A") && arr[0] == "12" {
+        return "00:\(arr[1]):\(time)"
+    } else {
+        return String(new)
+    }
 }
 let stdout = ProcessInfo.processInfo.environment["OUTPUT_PATH"]!
 FileManager.default.createFile(atPath: stdout, contents: nil, attributes: nil)
@@ -106,3 +106,66 @@ let result = timeConversion(s: s)
 fileHandle.write(result.data(using: .utf8)!)
 fileHandle.write("\n".data(using: .utf8)!)
 
+/*
+ * Complete the 'matchingStrings' function below.
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. STRING_ARRAY strings
+ *  2. STRING_ARRAY queries
+ */
+
+func matchingStrings(strings: [String], queries: [String]) -> [Int] {
+    // Write your code here
+    var dict = [String: Int]()
+    for string in strings {
+        if dict.keys.contains(string) {
+            dict[string]! += 1
+        } else {
+            dict[string] = 1
+        }
+    }
+    var result = [Int]()
+    for query in queries {
+        if dict.keys.contains(query){
+            result.append(dict[query]!)
+        } else {
+            result.append(0)
+        }
+     }
+    return result
+}
+
+let stdout = ProcessInfo.processInfo.environment["OUTPUT_PATH"]!
+FileManager.default.createFile(atPath: stdout, contents: nil, attributes: nil)
+let fileHandle = FileHandle(forWritingAtPath: stdout)!
+
+guard let stringsCount = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+var strings = [String]()
+
+for _ in 1...stringsCount {
+    guard let stringsItem = readLine() else { fatalError("Bad input") }
+
+    strings.append(stringsItem)
+}
+
+guard strings.count == stringsCount else { fatalError("Bad input") }
+
+guard let queriesCount = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+var queries = [String]()
+
+for _ in 1...queriesCount {
+    guard let queriesItem = readLine() else { fatalError("Bad input") }
+
+    queries.append(queriesItem)
+}
+
+guard queries.count == queriesCount else { fatalError("Bad input") }
+
+let res = matchingStrings(strings: strings, queries: queries)
+
+fileHandle.write(res.map{ String($0) }.joined(separator: "\n").data(using: .utf8)!)
+fileHandle.write("\n".data(using: .utf8)!)
