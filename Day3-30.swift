@@ -191,3 +191,31 @@ let result = factorial(n: n)
 fileHandle.write(String(result).data(using: .utf8)!)
 fileHandle.write("\n".data(using: .utf8)!)
 
+//Day10
+/*Given a base- integer, , convert it to binary (base-). Then find and print the base- integer denoting the maximum number of consecutive 's in 's binary representation. When working with different bases, it is common to show the base as a subscript.*/
+guard let n = Int((readLine()?.trimmingCharacters(in: .whitespacesAndNewlines))!)
+else { fatalError("Bad input") }
+
+var bin = [Int]()
+var num = n
+while num > 0 {
+    let rem = num % 2
+    num = num/2
+    bin.insert(rem, at: 0)
+}
+var maxone = 0
+var tmpmax = 0
+for i in bin {
+    if i == 1 {
+        tmpmax += 1
+        if tmpmax > maxone {
+            maxone = tmpmax
+        }
+    } else {
+        tmpmax = 0
+    }
+}
+print(maxone)
+
+
+
