@@ -267,3 +267,18 @@ let result = countingSort(arr: arr)
 
 fileHandle.write(result.map{ String($0) }.joined(separator: " ").data(using: .utf8)!)
 fileHandle.write("\n".data(using: .utf8)!)
+
+//Pangrams
+/*A pangram is a string that contains every letter of the alphabet. Given a sentence determine whether it is a pangram in the English alphabet. Ignore case. Return either pangram or not pangram as appropriate.*/
+func pangrams(s: String) -> String {
+    // Write your code here
+    let letterArr: [Character] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    let newStr = s.uppercased().filter {!$0.isWhitespace}
+    //print(newStr)
+    let arr = Array(Set(Array(newStr))).sorted()
+    print(arr)
+    if letterArr == arr {
+        return "pangram"
+    }
+    return "not pangram"
+}
