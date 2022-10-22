@@ -282,3 +282,21 @@ func pangrams(s: String) -> String {
     }
     return "not pangram"
 }
+//Permuting Two Arrays
+/* The function is expected to return a STRING.
+ * The function accepts following parameters:
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY A
+ *  3. INTEGER_ARRAY B
+ */
+func twoArrays(k: Int, A: [Int], B: [Int]) -> String {
+    // Write your code here
+    let C = A.sorted()
+    let D = Array(B.sorted().reversed())
+    for i in 0..<C.count {
+        if C[i] + D[i] < k {
+            return "NO"
+        }
+    }
+    return "YES"
+}
