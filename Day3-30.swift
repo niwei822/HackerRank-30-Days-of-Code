@@ -245,4 +245,90 @@ for i in 0...3 {
 }
 print(sums.max()!)
 
+//Day12
+/*You are given two classes, Person and Student, where Person is the base class and Student is the derived class. Completed code for Person and a declaration for Student are provided for you in the editor. Observe that Student inherits all the properties of Person.*/
+
+class Person {
+    private let firstName: String
+    private let lastName: String
+    private let id: Int
+
+    // Initializer
+    init(firstName: String, lastName: String, id: Int) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.id = id
+    }
+
+    // Print person data
+    func printPerson() {
+        print("Name: \(lastName), \(firstName)")
+        print("ID: \(id)")
+    }
+} // End of class Person
+
+// Class Student
+class Student: Person {
+    private var scores: [Int]
+    init(firstName: String, lastName: String, id: Int, scores: [Int]) {
+        self.scores = scores
+        super.init(firstName: firstName, lastName: lastName, id: id)
+    }
+    /*
+    *   Initializer
+    *
+    *   Parameters:
+    *   firstName - A string denoting the Person's first name.
+    *   lastName - A string denoting the Person's last name.
+    *   id - An integer denoting the Person's ID number.
+    *   scores - An array of integers denoting the Person's test scores.
+    */
+    // Write your initializer here
+    /*
+    *   Method Name: calculate
+    *   Return: A character denoting the grade.
+    */
+    // Write your method here
+    
+        
+    /*
+    *   Method Name: calculate
+    *   Return: A character denoting the grade.
+    */
+    // Write your method here
+    func calculate() -> Character {
+        var sum = 0
+        for score in scores {
+            sum += score
+        }
+        let a = sum / scores.count
+        switch a {
+            case 90...100:
+                return "O"
+            case 80...91:
+                return "E"
+            case 70...81:
+                return "A"
+            case 55...71:
+                return "P"
+            case 40...51:
+                return "D"
+            default:
+                return "T"
+        }
+    }
+}
+// End of class Student
+
+let nameAndID = readLine()!.components(separatedBy: " ")
+let _ = readLine()
+let scores = readLine()!.components(separatedBy: " ").map{ Int($0)! }
+
+let s = Student(firstName: nameAndID[0], lastName: nameAndID[1], id: Int(nameAndID[2])!, scores: scores)
+
+s.printPerson()
+
+print("Grade: \(s.calculate())")
+
+
 
