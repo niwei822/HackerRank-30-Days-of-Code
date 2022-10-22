@@ -300,3 +300,29 @@ func twoArrays(k: Int, A: [Int], B: [Int]) -> String {
     }
     return "YES"
 }
+/*
+ Two children, Lily and Ron, want to share a chocolate bar. Each of the squares has an integer on it.
+ Lily decides to share a contiguous segment of the bar selected such that:
+ The length of the segment matches Ron's birth month, and,
+ The sum of the integers on the squares is equal to his birth day.
+ Determine how many ways she can divide the chocolate.
+ */
+
+func birthday(s: [Int], d: Int, m: Int) -> Int {
+    // Write your code here
+    var num = 0
+    for i in 0...s.count {
+        var total = 0
+        var j = i
+        var k = 0
+        while k < m && j < s.count {
+            total += s[j]
+            k += 1
+            j += 1
+        }
+        if total == d {
+            num += 1
+        }
+    }
+    return num
+}
