@@ -360,3 +360,23 @@ func solution(A: [Int], K: Int) -> [Int] {
 
 print(solution(A: [1, 2, 3, 4, 5,6,7,8,8,10], K: 5)) // 5 1 2 3 4
 
+//Day 14 Scope
+
+class Difference {
+    private var elements = [Int]()
+    var maximumDifference: Int
+    // Write your code here
+    init (a: [Int]) {
+        self.elements = a
+        self.maximumDifference = 0
+    }
+    func computeDifference() {
+        let new = a.sorted()
+        maximumDifference = new[new.count - 1] - new[0]
+    }
+} // End of Difference class
+let n = Int(readLine()!)!
+let a = readLine()!.components(separatedBy: " ").map{ Int($0)! }
+let d = Difference(a: a)
+d.computeDifference()
+print(d.maximumDifference)
