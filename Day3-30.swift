@@ -330,5 +330,33 @@ s.printPerson()
 
 print("Grade: \(s.calculate())")
 
+//Day 13
+/*
+ Rotate array to right N times.
+ https://app.codility.com/programmers/lessons/2-arrays/cyclic_rotation/
+ 
+ For example, given
 
+     A = [3, 8, 9, 7, 6]
+     K = 3
+ the function should return [9, 7, 6, 3, 8]. Three rotations were made:
+
+     [3, 8, 9, 7, 6] -> [6, 3, 8, 9, 7]
+     [6, 3, 8, 9, 7] -> [7, 6, 3, 8, 9]
+     [7, 6, 3, 8, 9] -> [9, 7, 6, 3, 8]
+
+ */
+func solution(A: [Int], K: Int) -> [Int] {
+    // do your work here...
+    guard !A.isEmpty else { return [] }
+    guard K > 0 else { return A }
+    
+    let i = A.count - 1 - K //i=2
+    let arry1 = A[0...i]
+    let arry2 = A[(i+1)...(A.count - 1)]
+    let arry3 = arry2 + arry1
+    return [Int](arry3)
+}
+
+print(solution(A: [1, 2, 3, 4, 5,6,7,8,8,10], K: 5)) // 5 1 2 3 4
 
