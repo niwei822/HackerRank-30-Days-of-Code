@@ -326,3 +326,20 @@ func birthday(s: [Int], d: Int, m: Int) -> Int {
     }
     return num
 }
+/*There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.*/
+func sockMerchant(n: Int, ar: [Int]) -> Int {
+    // Write your code here
+    var new = [Int:Int]()
+    var sum = 0
+    for i in ar {
+        if new.keys.contains(i) {
+            new[i]! += 1
+        } else {
+            new[i] = 1
+        }
+    }
+    for key in new.keys {
+        sum += new[key]! / 2
+    }
+    return sum
+}
