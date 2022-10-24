@@ -359,3 +359,36 @@ func flippingMatrix(matrix: [[Int]]) -> Int {
         }
     }
     return sum }
+/*
+ The median of a list of numbers is essentially its middle element after sorting. The same number of elements occur after it as before. Given a list of numbers with an odd number of elements, find the median?*/
+func findMedian(arr: [Int]) -> Int {
+    // Write your code here
+let newArr = arr.sorted()
+let i = (newArr.count - 1) / 2
+return newArr[i]
+}
+//
+/*def findZigZagSequence(a, n):
+ a.sort()
+ mid = int((n + 1)/2 - 1)
+ a[mid], a[n-1] = a[n-1], a[mid]
+ st = mid + 1
+ ed = n - 2
+ while(st <= ed):
+     a[st], a[ed] = a[ed], a[st]
+     st = st + 1
+     ed = ed - 1
+
+ for i in range (n):
+     if i == n-1:
+         print(a[i])
+     else:
+         print(a[i], end = ' ')
+ return
+
+test_cases = int(input())
+for cs in range (test_cases):
+ n = int(input())
+ a = list(map(int, input().split()))
+ findZigZagSequence(a, n)
+*/
