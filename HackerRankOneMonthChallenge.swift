@@ -343,3 +343,19 @@ func sockMerchant(n: Int, ar: [Int]) -> Int {
     }
     return sum
 }
+/*Sean invented a game involving a matrix where each cell of the matrix contains an integer. He can reverse any of its rows or columns any number of times. The goal of the game is to maximize the sum of the elements in the submatrix located in the upper-left quadrant of the matrix.
+Given the initial configurations for matrices, help Sean reverse the rows and columns of each matrix in the best possible way so that the sum of the elements in the matrix's upper-left quadrant is maximal.*/
+
+func flippingMatrix(matrix: [[Int]]) -> Int {
+    // Write your code here
+    let r = matrix.count - 1
+    let c = matrix.count / 2
+    var sum = 0
+    for ri in 0...c - 1 {
+        for ci in 0...c - 1 {
+            var max_num = max(matrix[ri][ci], matrix[ri][r - ci], matrix[r -
+                                                                         ri][ci], matrix[r - ri][r - ci])
+            sum += max_num
+        }
+    }
+    return sum }
