@@ -380,3 +380,17 @@ let a = readLine()!.components(separatedBy: " ").map{ Int($0)! }
 let d = Difference(a: a)
 d.computeDifference()
 print(d.maximumDifference)
+
+//Day15 Linked List
+func insert(head: Node?, data: Int!) -> Node? {
+    // Enter your code here.
+    if head == nil {
+        return Node(data: data)
+    }
+    var c = head
+    while c!.next != nil {
+        c = c!.next
+    }
+    c!.next = Node(data: data)
+    return head
+}
