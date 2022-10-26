@@ -394,3 +394,23 @@ func insert(head: Node?, data: Int!) -> Node? {
     c!.next = Node(data: data)
     return head
 }
+//Day16 exceptions
+enum StringToIntTypecastingError: Error {
+    case BadString
+}
+func stringToInt(inputString: String) throws {
+    if Int(inputString) == nil {
+    throw StringToIntTypecastingError.BadString
+  }
+  else {
+    let result = Int(inputString)
+    print(result!)
+  }
+}
+let inputString = readLine()!
+
+do {
+    try print(stringToInt(inputString: inputString))
+} catch StringToIntTypecastingError.BadString {
+    print("Bad String")
+}
