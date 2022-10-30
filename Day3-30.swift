@@ -474,4 +474,19 @@ class Solution {
         return queue.remove(at: 0)
     }
 }
-
+//Day20 Bubble sort
+// Write your code here
+var numSwaps = 0
+for i in 0..<n {
+    for j in 0..<n - 1 {
+        if a[j] > a[j+1] {
+            let temp = a[j]
+            a[j] = a[j+1]
+            a[j+1] = temp
+            numSwaps += 1
+        }
+    }
+}
+print("Array is sorted in \(numSwaps) swaps.")
+print("First Element: \(a[0])")
+print("Last Element: \(a[n - 1])")
