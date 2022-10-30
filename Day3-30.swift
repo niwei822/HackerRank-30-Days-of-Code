@@ -453,3 +453,25 @@ for _ in 0..<t {
     }
 }
 
+//Day18 Queues and Stacks
+class Solution {
+    //Write your code here
+    var queue = [Character]()
+    var stack = [Character]()
+    func pushCharacter(ch: Character) {
+        stack.append(ch)
+    }
+    
+    func popCharacter() -> Character {
+        return stack.popLast()!
+    }
+    
+    func enqueueCharacter(ch: Character) {
+        queue.append(ch)
+    }
+    
+    func dequeueCharacter() -> Character {
+        return queue.remove(at: 0)
+    }
+}
+
