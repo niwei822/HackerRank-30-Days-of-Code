@@ -500,3 +500,37 @@ print("Last Element: \(a[n - 1])")
     }
 }
 
+//Day22 Binary Search Trees
+class Node {
+    var data: Int
+    var left: Node?
+    var right: Node?
+
+    init(d : Int) {
+        data  = d
+    }
+} // End of Node class
+// Start of Tree class
+class Tree {
+    func insert(root: Node?, data: Int) -> Node? {
+        if root == nil {
+            return Node(d: data)
+        }
+
+        if data <= (root?.data)! {
+            root?.left = insert(root: root?.left, data: data)
+        } else {
+            root?.right = insert(root: root?.right, data: data)
+        }
+
+        return root
+    }
+
+    func getHeight(root: Node?) -> Int {
+        // Complete the function
+        if root == nil {
+            return -1
+        }
+        return 1 + max(getHeight(root: root?.left), getHeight(root: root?.right))
+    } // End of getHeight function
+
