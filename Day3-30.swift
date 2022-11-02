@@ -505,7 +505,7 @@ class Node {
     var data: Int
     var left: Node?
     var right: Node?
-
+    
     init(d : Int) {
         data  = d
     }
@@ -516,16 +516,16 @@ class Tree {
         if root == nil {
             return Node(d: data)
         }
-
+        
         if data <= (root?.data)! {
             root?.left = insert(root: root?.left, data: data)
         } else {
             root?.right = insert(root: root?.right, data: data)
         }
-
+        
         return root
     }
-
+    
     func getHeight(root: Node?) -> Int {
         // Complete the function
         if root == nil {
@@ -533,4 +533,61 @@ class Tree {
         }
         return 1 + max(getHeight(root: root?.left), getHeight(root: root?.right))
     } // End of getHeight function
-
+    
+    //Day 23: BST Level-Order Traversal
+    // Start of Node class
+    class Node {
+        var data: Int
+        var left: Node?
+        var right: Node?
+        
+        init(d : Int) {
+            data  = d
+        }
+    } // End of Node class
+    // Start of Tree class
+    class Tree {
+        func insert(root: Node?, data: Int) -> Node? {
+            if root == nil {
+                return Node(d: data)
+            }
+            
+            if data <= (root?.data)! {
+                root?.left = insert(root: root?.left, data: data)
+            } else {
+                root?.right = insert(root: root?.right, data: data)
+            }
+            
+            return root
+        }
+        
+        func levelOrder(root: Node?) -> Void {
+            // Complete the function
+            var bst = [root]
+            var data: [Int] = []
+            while bst.count != 0 {
+                guard let nod = bst.popLast() else {return}
+                data.append(nod?.data ?? 0)
+                if nod?.left != nil {
+                    bst.insert(nod?.left, at: 0)
+                }
+                if nod?.right != nil {
+                    bst.insert(nod?.right, at: 0)
+                }
+            }
+            print(data.map { String($0) }.joined(separator: " "))
+        } // End of levelOrder function
+        
+        
+    } // End of Tree class
+    
+    var root: Node?
+    let tree = Tree()
+    
+    let t = Int(readLine()!)!
+    
+    for _ in 0..<t {
+        root = tree.insert(root: root, data: Int(readLine()!)!)
+    }
+    
+    tree.levelOrder(root: root)
