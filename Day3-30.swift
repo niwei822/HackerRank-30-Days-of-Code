@@ -591,3 +591,16 @@ class Tree {
     }
     
     tree.levelOrder(root: root)
+//Day24 remove duplicates from sorted list
+    func removeDuplicates(head: Node?) -> Node? {
+        // Add your code here
+        var temp = head
+        while temp != nil {
+            if temp?.data == temp?.next?.data {
+                temp?.next = temp?.next?.next
+            }else {
+                temp = temp?.next
+            }
+        }
+        return head
+    }
