@@ -604,3 +604,20 @@ class Tree {
         }
         return head
     }
+//Day25 checkPrime
+    func checkPrime(n: Int) -> String {
+        if n == 0 || n == 1 {
+            return "Prime"
+        }
+        var count = 0
+        for i in 1...n {
+            if n % i == 0 {
+                count += 1
+            }
+        }
+        if count > 2 {
+            return "Not Prime"
+        }
+        return "Prime"
+    }
+    checkPrime(n: 71)
